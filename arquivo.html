@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+
+  <style>
+    
+
+    #botaoLimpar {
+      position: relative;
+      left: 166px;
+      color: antiquewhite;
+      background-color: black;
+    }
+
+    #botaoLimpar:hover {
+      color: black;
+      background-color: firebrick;
+    }
+  </style>
+  <title>JavaScript</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <div class="container col-lg-3">
+    <form id="formulario" autocomplete="off">
+      <h1 style="font-size: 45px; font-family: Arial, Helvetica, sans-serif; " class="h3 mb-3 font-weight-normal">Login</h1>
+      <div class="form-group">
+        <label for="exampleInputEmail1">E-mail:</label> 
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">@</div>
+            </div>
+            <input type="text" name="" id="login" class="form-control"
+             placeholder="email@gmail.com" aria-describedby="helpId">
+             <small id="helpId" class="text-muted"></small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Senha:</label><input type="password" name="" id="senha" class="form-control"
+          placeholder="**********" aria-describedby="helpId">
+        <small id="helpId" class="text-muted"></small>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Lembre-me</label>
+      </div>
+      <div id="erro" class="alert alert-danger" role="alert">Email ou senha inválida</div>
+      <button id="botaoEntrar" type="button" class="btn btn-primary">
+        Entrar
+      </button>
+      <button id="botaoLimpar" type="reset" class="btn btn-secundary">
+        Limpar
+      </button>
+    </form>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+</body>
+
+<script>
+  const botaoEntrar = document.querySelector("#botaoEntrar");
+  const botaoLimpar = document.querySlector("#botaoLimpar");
+  const inputLogin = document.querySelector("#login");
+  const inputSenha = document.querySelector("#senha");
+  const erroLogin = document.querySelector("#error");
+  const LoginDiv = document.querySelector(".container");
+  let loginObject = {
+    login: '',
+    senha: ''
+  };
+  const validaLogin = {
+    login: 'yan@gmail.com',
+    senha: '123'
+  };
+
+  const error = ` <div id="erro" class="alert alert-danger" role="alert">
+    Email ou senha inválida</div> `
+
+  const correct = `<h1 style="fot-size: 50px; width: 200px;" class="h3 font-weight-bold">Login Válido</h1> `
+
+  botaoEntrar.onclick = function () {
+      loginObject.login = inputLogin.value;
+      loginObject.senha = inputSenha.value;
+      LoginDiv.innerHTML = '';
+      botaoEntrar.innerHTML = 'Carregando...';
+      botaoEntrar.disable = true;
+      setTimeout(function () {
+          if (loginObject.login == validaLogin.login &&
+            loginObject.senha == validaLogin.senha) {
+            LoginDiv.innerHTML = correct;
+          } else if (loginObject.login == "" || loginObject.senha == "") {
+            errorDiv.innerHTML = alerta;
+          } else {
+            errorDiv.innerHTML = error;
+          }
+          botaoEntrar.innerHTML = 'Entrar';
+          botaoEntrar.disable = false;
+        }, 1000);
+        
+
+      }
+
+      
+</script>
+
+</html>
